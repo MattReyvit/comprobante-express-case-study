@@ -1,0 +1,10 @@
+flowchart LR
+  U[Business user] --> F[Invoice form]
+  F --> V[Tax validation]
+  V --> DB[(Invoices and customers\nRow-level security)]
+  V --> T[Tax authority integration]
+  T --> S{Submission status}
+  S -->|Accepted| A[Immutable record]
+  S -->|Rejected| R[Correction workflow]
+  A --> P[PDF and customer delivery]
+  R --> F
